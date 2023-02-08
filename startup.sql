@@ -2,7 +2,7 @@
 
 CREATE DATABASE IF NOT EXISTS `social`
 
-CREATE TABLE `social`.`users` (
+CREATE TABLE `railway`.`users` (
   `userId` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `social`.`users` (
   PRIMARY KEY (`userId`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
 
-CREATE TABLE `social`.`posts` (
+CREATE TABLE `railway`.`posts` (
   `postId` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `postImg` VARCHAR(255) NULL,

@@ -12,10 +12,13 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://tyson-social-api-sql.up.railway.app/",
   })
 );
 app.use(cookieParser());
+app.get("/", (req, res) => {
+  res.send("Welcome to social sql api");
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("API working!");

@@ -41,8 +41,8 @@ export const login = (req, res) => {
     if (!checkPassword) return res.status(400).json("Wrong password or email!");
 
     //  you can  create a secret key in .env file
-    const token = jwt.sign({ id: data[0].id }, "secretkey");
-
+    const token = jwt.sign({ userId: data[0].userId }, "secretkey");
+    
     const { password, ...others } = data[0];
 
     res

@@ -10,6 +10,7 @@ dotenv.config();
 
 export const db = mysql.createPool({
   connectionLimit: 10,
+  connectTimeout:20,
   host: process.env.MYSQLHOST,
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,

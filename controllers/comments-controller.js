@@ -21,7 +21,7 @@ export const addComment = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const q =
-      "INSERT INTO comments(`content`, `created-at`, `user-id`, `post-id`) VALUES (?)";
+      "INSERT INTO comments(`content`, `createdAt`, `userId`, `postId`) VALUES (?)";
     const values = [
       req.body.content,
       moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),

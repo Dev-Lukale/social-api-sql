@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.get("/", (req, res) => {
   res.send("Welcome to social sql api");
 });
-app.get("/users/", userRoutes);
+app.get("/users", userRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("API working!");

@@ -17,7 +17,7 @@ app.use(
   })
 );
 app.use(cookieParser());
-
-app.listen(8800, () => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
   console.log("API working!");
 });

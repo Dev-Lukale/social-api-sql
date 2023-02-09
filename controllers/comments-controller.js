@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import moment from "moment";
 
 export const getComments = (req, res) => {
-  const q = `SELECT c.*, u.id AS userId, name, profilePic FROM comments AS c JOIN users AS u ON (u.id = c.userId)
+  const q = `SELECT c.*,userId, username FROM comments AS c JOIN users AS u ON (u.userId = c.userId)
     WHERE c.postId = ? ORDER BY c.createdAt DESC
     `;
 
@@ -25,7 +25,7 @@ export const addComment = (req, res) => {
     const values = [
       req.body.content,
       moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-      userInfo.id,
+      userInfo.userId,
       req.body.postId,
     ];
 
@@ -44,9 +44,9 @@ export const deleteComment = (req, res) => {
     if (err) return res.status(403).json("Token is not valid!");
 
     const commentId = req.params.id;
-    const q = "DELETE FROM comments WHERE `id` = ? AND `userId` = ?";
+    const q = "DELETE FROM comments WHERE `commentId` = ? AND `userId` = ?";
 
-    db.query(q, [commentId, userInfo.id], (err, data) => {
+    db.query(q, [commentId, userInfo.userId], (err, data) => {
       if (err) return res.status(500).json(err);
       if (data.affectedRows > 0) return res.json("Comment has been deleted!");
       return res.status(403).json("You can delete only your comment!");

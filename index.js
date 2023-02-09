@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import userRoutes from "./routes/users-route.js";
 import authRoutes from "./routes/auth-route.js";
 import postRoutes from "./routes/posts-route.js";
+import commentRoutes from "./routes/comments-route.js";
 const app = express();
 
 //middlewares
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 });
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+app.use("/comments", commentRoutes);
 app.use("/auth", authRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

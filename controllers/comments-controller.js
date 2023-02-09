@@ -1,4 +1,4 @@
-import { db } from "../../social-api-sql/connect.js/index.js";
+import { db } from "../connect.js";
 import jwt from "jsonwebtoken";
 import moment from "moment";
 

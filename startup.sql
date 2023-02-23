@@ -22,3 +22,23 @@ CREATE TABLE `railway`.`posts` (
     REFERENCES `social`.`users` (`userId`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
+
+    CREATE TABLE `railway`.`comments` (
+  `commentId` INT NOT NULL AUTO_INCREMENT,
+  `content` VARCHAR(255) NOT NULL,
+  `createdAt` DATETIME NULL,
+  `userId` INT NOT NULL,
+  `postId` INT NOT NULL,
+  PRIMARY KEY (`commentId`),
+  INDEX `commentPost_idx` (`postId` ASC) VISIBLE,
+  INDEX `commentUserFK_idx` (`userId` ASC) VISIBLE,
+  CONSTRAINT `commentPostFK`
+    FOREIGN KEY (`postId`)
+    REFERENCES `raiway`.`posts` (`postId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `commentUserFK`
+    FOREIGN KEY (`userId`)
+    REFERENCES `railway`.`users` (`userId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION);
